@@ -1,4 +1,5 @@
 #ifndef LOGGER_H
+#define LOGGER_H
 
 #include <time.h>
 #include <stdio.h>
