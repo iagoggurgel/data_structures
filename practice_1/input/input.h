@@ -4,11 +4,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
-#ifndef M_E
-#define M_E 2.71828182845904523536
+#ifndef N_INPUT
+#define N_INPUT 50000000
 #endif
 
-int f(int);
+int * generateInput();
+void writeInputs();
+int * readInputs(const int);
+void help();
+
+const int n = N_INPUT;
 
 #endif
