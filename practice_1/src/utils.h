@@ -1,5 +1,5 @@
-#ifndef LOGGER_H
-#define LOGGER_H
+#ifndef UTILS_H
+#define UTILS_H
 
 #include <time.h>
 #include <stdio.h>

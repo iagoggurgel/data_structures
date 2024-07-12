@@ -1,20 +1,20 @@
-#include "logger.h"
+#include "utils.h"
 #include "alg.h"
 
 struct timespec before;
 struct timespec after;
 
-void diff_time()
+void diffTime()
 {
   printf("%ld.%ld\n", after.tv_sec - before.tv_sec ,after.tv_nsec - before.tv_nsec);
 }
 
-void start_clock()
+void startClock()
 {
   timespec_get(&before, TIME_UTC);
 }
 
-void end_clock()
+void endClock()
 {
   timespec_get(&after, TIME_UTC);
 }
@@ -26,17 +26,26 @@ void swap(int * a, int * b)
   *a ^= *b;
 }
 
-void print_array(int * a, int n)
+void printArray(int * a, int n)
 {
   int i;
-  for(i = 0; i < n; i++)
+  for (i = 0; i < n; i++)
   {
     printf("%d ", a[i]);
   }
   printf("\n");
 }
 
-int main()
+int isSorted(int * a, int n)
 {
+  int i;
+  for (i = 0; i < n - 1; i++)
+  {
+    if (a[i] > a[n + 1])
+      goto notSorted;
+  }
+
   return 0;
+
+  notSorted: return -1;
 }
