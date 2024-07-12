@@ -54,3 +54,9 @@ dkms.conf
 # VSCODE files
 
 .vscode/
+
+# Project Files
+
+*.in
+
+*/build/input
