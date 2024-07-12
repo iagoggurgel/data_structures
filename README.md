@@ -1,2 +1,2 @@
 # data_structures
-Repository for studying data_structures
+Repository for studying Data Structures
