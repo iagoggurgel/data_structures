@@ -1,16 +1,25 @@
-#include "logger.h"
+#include "utils.h"
 #include "alg.h"
 
-void isort(int * a, int n)
+
+/*
+  Algoritmo de ordenação Insertion Sort
+
+  Entradas:
+      v: ponteiro para um vetor de inteiros
+      n: número de elementos do vetor v
+
+*/
+void iSort(int * v, int n)
 {
   int j, i;
   i = 1;
   while(i < n)
   {
     j = i;
-    while(j > 0 && a[j - 1] > a[j])
+    while(j > 0 && v[j - 1] > v[j])
     {
-      swap(&a[j - 1], &a[j]);
+      swap(&v[j - 1], &v[j]);
       j -= 1;
     }
     i += 1;
