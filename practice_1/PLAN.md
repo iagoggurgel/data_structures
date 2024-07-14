@@ -4,11 +4,12 @@ The algorithms I want to use are:
 
 ## Stable:
 
-1. Distribution Sort
+1. Distribution Sort To-do
 2. Insertion Sort OK
-3. Merge Sort 
-4. Selection Sort
-5. Quick Sort
+3. Merge Sort To-do
+4. Selection Sort To-do
+5. Quick Sort To-do
+6. Counting Sort
 
 ## Unstable:
 
@@ -16,8 +17,16 @@ The algorithms I want to use are:
 
 It's important to make sure to explain what we mean with Stable and Unstable.
 
+## Unrelated Algorithms
+
+1. Quine-McCluskey
+
 # MEASUREMENTS FRAMEWORK
 
-The idea here is pretty simple. Make 200 input files to be served into the algorithms and user logger functions to take
-the measurements. After that, with those informations the idea is to plot the discretized graph using the number of inputs
-and It's runtime and compare with the continuous runtime function that has been calculated towards the algorithm runtime.
+Measure time and separate in a "<algorithm>.csv" with two columns: number of inputs and runtime.
+
+## Code listings
+
+1. All algorithms
+2. All utility code
+3. Input Builder code
