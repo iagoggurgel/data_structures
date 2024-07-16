@@ -2,11 +2,14 @@
 #define ALG_H
 
 
+#include <stdlib.h>
+#include "utils.h"
+
 void iSort(int *, int);
 void sSort(int *, int);
 void qSort(int *, int, int);
 void mSort(int *, int);
-void dSort(int *, int);
+void dSort(int *, int, int);
 
 void swap(int *, int *);
 void printArray(int *, int);
