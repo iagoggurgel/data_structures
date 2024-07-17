@@ -48,6 +48,7 @@ void dSort(int * v, int n, int k)
             j++;
         }
     }
+    free(buckets);
 }
 
 /*
@@ -67,12 +68,6 @@ void insertNumber(List * prev, int x)
     while (aux->next != NULL)
     {
         aux = aux->next;
-    }
-    if (aux == prev)
-    {
-        aux->value = x;
-        free(newNumber);
-        return;
     }
     aux->next = newNumber;
 }
