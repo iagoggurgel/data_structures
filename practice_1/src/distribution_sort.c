@@ -1,17 +1,21 @@
 #include "alg.h"
 
-typedef
-struct list_h
+struct node_h
 {
 
     int value;
-    struct list_h * next;
+    struct node_h * next;
 
-} List;
+};
+
+struct head_h
+{
+    struct node_h * tail;
+};
 
 
-void insertNumber(List *, int);
-void lSort(List *);
+void insertNumber(struct head_h **, int);
+void lSort(struct head_h *);
 
 
 /*
@@ -24,8 +28,8 @@ void lSort(List *);
 */
 void dSort(int * v, int n, int k)
 {
-    List * buckets = (List *) calloc(k, sizeof(List));
-    List * tmp;
+    struct head_h * buckets = (struct head_h *) calloc(k, sizeof(struct head_h));
+    struct node_h * tmp;
     int m = 1 + max(v, n);
     for (int i = 0; i < n; i++)
     {
@@ -59,17 +63,17 @@ void dSort(int * v, int n, int k)
         n: número de elementos de v
 
 */
-void insertNumber(List * prev, int x)
+void insertNumber(struct head_h ** head_ref, int x)
 {
-    List * newNumber = (List *) malloc(sizeof(List));
+    struct node_h * newNumber = (struct node_h *) malloc(sizeof(struct node_h));
     newNumber->value = x;
     newNumber->next = NULL;
-    List * aux = prev;
-    while (aux->next != NULL)
+    struct head_h * aux = head_ref;
+    while (aux->tail != NULL)
     {
-        aux = aux->next;
+        aux = aux->tail;
     }
-    aux->next = newNumber;
+    aux->tail = newNumber;
 }
 
 /*
@@ -104,7 +108,7 @@ void lSort(List * v)
 int main()
 {
     int v[] = {9492, 0, 1, 60, 49, 45, 85, 1002};
-    dSort(v, 8, 3);
+    dSort(v, 8, 4);
     printArray(v, 8);
     return EXIT_SUCCESS;
 }
