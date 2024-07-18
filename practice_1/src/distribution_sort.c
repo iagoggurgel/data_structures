@@ -1,17 +1,21 @@
 #include "alg.h"
 
-struct node_h
-{
+/*
+    Estrutura de um nó da lista encadeada
 
-    int value;
+    Atributos:
+        data: valor de contido no nó
+        next: ponteiro para o próximo nó da lista.
+*/
+struct node_h {
+    int data;
     struct node_h * next;
-
 };
 
 
-void insertHead(struct node_h **, int);
-void insertEnd(struct node_h **, int);
-void lSort(struct node_h *);
+void push(struct node_h **, int);
+void lSort(struct node_h **);
+void printNodes(struct node_h *);
 
 
 /*
@@ -20,17 +24,19 @@ void lSort(struct node_h *);
     Entradas:
         v: vetor de inteiros
         n: número de elementos de v
+        k: número de buckets
 
 */
 void dSort(int * v, int n, int k)
 {
-    struct node_h * buckets = (struct node_h *) calloc(k, sizeof(struct node_h));
+    struct node_h ** buckets = (struct node_h **) calloc(k, sizeof(struct node_h *));
     struct node_h * tmp;
     int m = 1 + max(v, n);
+    int bucket;
     for (int i = 0; i < n; i++)
     {
-        int bucket = (k * v[i]) / m;
-        insertNumber(&buckets[bucket], v[i]);
+        bucket = (k * v[i]) / m;
+        push(&buckets[bucket], v[i]);
     }
     for (int i = 0; i < k; i++)
     {
@@ -39,12 +45,17 @@ void dSort(int * v, int n, int k)
     int j = 0;
     for (int i = 0; i < k; i++)
     {
-        tmp = &buckets[i];
+        tmp = buckets[i];
+        if (tmp == NULL)
+        {
+            continue;
+        }
+        v[j] = tmp->data;
+        j++;
         while (tmp->next != NULL)
         {
-            printf("%d", tmp->value);
-            v[j] = tmp->value;
             tmp = tmp->next;
+            v[j] = tmp->data;
             j++;
         }
     }
@@ -55,21 +66,40 @@ void dSort(int * v, int n, int k)
     Função auxiliar para inserção de números na lista
 
     Entradas:
-        v: vetor de inteiros
+        node: nó raiz da lista encadeada
         n: número de elementos de v
 
 */
-void insertNumber(struct node_h ** head_ref, int x)
-{
-    struct node_h * newNumber = (struct node_h *) malloc(sizeof(struct node_h));
-    newNumber->value = x;
-    newNumber->next = NULL;
-    struct node_h * aux = head_ref;
+void push(struct node_h ** node, int x) {
+    
+    struct node_h * newNode = (struct node_h *) malloc(sizeof(struct node_h));
+    struct node_h * aux;
+    newNode->data = x;
+    newNode->next = NULL;
+    if (*node == NULL)
+    {
+        *node = newNode;
+        return;
+    }
+
+    aux = *node;
+
     while (aux->next != NULL)
     {
         aux = aux->next;
     }
-    aux->next = newNumber;
+
+    aux->next = newNode;
+    return;
+}
+
+void printNodes(struct node_h * node)
+{
+    while (node != NULL) {
+        printf("%d -> ", node->data);
+        node = node->next;
+    }
+    printf("NULL\n");
 }
 
 /*
@@ -80,31 +110,27 @@ void insertNumber(struct node_h ** head_ref, int x)
         k: número de elementos de v
 
 */
-void lSort(struct node_h * v)
+void lSort(struct node_h ** node)
 {
     struct node_h * i, * j, * aux;
-
-    i = v->next;
+    if (*node == NULL)
+    {
+        return;
+    }
+    
+    i = *node;
     while (i->next != NULL)
     {
         j = i;
         while (j->next != NULL)
         {
             aux = j->next;
-            if (aux->value < j->value)
+            if (aux->data < j->data)
             {
-                swap(&aux->value, &j->value);
+                swap(&aux->data, &j->data);
             }
             j = j->next;
         }
         i = i->next;
     }
-}
-
-int main()
-{
-    int v[] = {9492, 0, 1, 60, 49, 45, 85, 1002};
-    dSort(v, 8, 4);
-    printArray(v, 8);
-    return EXIT_SUCCESS;
 }
