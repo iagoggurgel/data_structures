@@ -40,7 +40,6 @@ void hSort(int * v, int n)
 void heapify(int * v, int n, int i)
 {
 
-
     int largest = i;
 
     int left = 2 * i + 1;

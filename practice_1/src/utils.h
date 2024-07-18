@@ -3,6 +3,7 @@
 
 #include <time.h>
 #include <stdio.h>
+#include "alg.h"
 
 void diffTime();
 void startClock();
