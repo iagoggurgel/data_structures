@@ -65,3 +65,5 @@ dkms.conf
 */build/ssort
 */build/msort
 */build/qsort
+*/build/csort
+*/build/hsort
