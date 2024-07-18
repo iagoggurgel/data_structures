@@ -62,9 +62,9 @@ void printArray(int * v, int n)
   int i;
   for (i = 0; i < n; i++)
   {
-    printf("%d ", v[i]);
+    printf("%d -> ", v[i]);
   }
-  printf("\n");
+  printf("END\n");
 }
 
 
@@ -81,6 +81,7 @@ int isSorted(int * v, int n)
   for (i = 0; i < n - 1; i++)
   {
     if (v[i] > v[n + 1])
+      // Se há v[i] maior que seu sucessor, o vetor não está ordenado.
       goto notSorted;
   }
 
@@ -107,4 +108,24 @@ int max(int * v, int n)
     }
   }
   return max;
+}
+
+/*
+  Função auxiliar para achar o menor valor do vetor.
+
+  Entradas:
+    v: ponteiro para um vetor de inteiros
+    n: número de elementos do vetor v
+*/
+int min(int * v, int n)
+{
+  int min = v[0];
+  for (int i = 1; i < n; i++)
+  {
+    if (min > v[i])
+    {
+      min = v[i];
+    }
+  }
+  return min;
 }
