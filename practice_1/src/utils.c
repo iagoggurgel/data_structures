@@ -1,5 +1,4 @@
 #include "utils.h"
-#include "alg.h"
 
 struct timespec before;
 struct timespec after;
@@ -42,6 +41,16 @@ void endClock()
     a -> b
     b -> a
     Utiliza o método de swap com a lógica de Exclusive-OR
+
+  Observação:
+    É necessário tomar cuidado com a situação onde a e b apontam para o mesmo
+    endereço de memória. Nesse caso, a seguinte situação ocorrerá:
+
+    a = b = 0111
+    a = 0111 XOR 0111 = 0000
+    
+    As seguintes instruções de Exclusive-OR não vão fazer diferença e o valor de
+    a será zerado.
 */
 void swap(int * a, int * b)
 {
