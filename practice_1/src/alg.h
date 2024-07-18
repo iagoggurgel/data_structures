@@ -10,7 +10,7 @@ void sSort(int *, int);
 void qSort(int *, int, int);
 void mSort(int *, int, int);
 void dSort(int *, int, int);
-void cSort(int * v, int);
+// void cSort(int * v, int); Needs fixing
 void hSort(int *, int);
 
 /*

@@ -25,7 +25,7 @@ void sSort(int * v, int n)
         }
         if (i != min)
         {
-            swap(v[i], v[min]);
+            swap(&v[i], &v[min]);
         }
     }
 }

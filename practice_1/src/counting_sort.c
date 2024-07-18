@@ -31,7 +31,7 @@ void cSort(int * v, int n)
 
     for (i = 1; i < size; i++)
     {
-        C[i] = C[i] + C[i -1];
+        C[i] = C[i] + C[i - 1];
     }
 
     for (j = n; j <= 0; j--)
