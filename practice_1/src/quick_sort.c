@@ -1,13 +1,15 @@
 #include "alg.h"
 
+int partition(int *, int, int);
+
 
 /*
     Algoritmo de ordenação Quick Sort
 
     Entradas:
         v: vetor de inteiros
-        s: primeiro elemento
-        e: último elemento
+        s: índice inicial
+        e: índice final
 
 */
 void qSort(int * v, int s, int e)
@@ -20,6 +22,14 @@ void qSort(int * v, int s, int e)
     }
 }
 
+/*
+    Função auxiliar para partir os sub-vetores utilizados no Quick Sort
+
+    Entradas:
+        v: vetor de inteiros
+        s: índice inicial
+        e: índice final
+*/
 int partition(int * v, int s, int e)
 {
 
@@ -45,6 +55,6 @@ int partition(int * v, int s, int e)
             return j;
         }
 
-        swap(v[i], v[j]);
+        swap(&v[i], &v[j]);
     }
 }
