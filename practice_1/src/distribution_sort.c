@@ -8,14 +8,10 @@ struct node_h
 
 };
 
-struct head_h
-{
-    struct node_h * tail;
-};
 
-
-void insertNumber(struct head_h **, int);
-void lSort(struct head_h *);
+void insertHead(struct node_h **, int);
+void insertEnd(struct node_h **, int);
+void lSort(struct node_h *);
 
 
 /*
@@ -28,7 +24,7 @@ void lSort(struct head_h *);
 */
 void dSort(int * v, int n, int k)
 {
-    struct head_h * buckets = (struct head_h *) calloc(k, sizeof(struct head_h));
+    struct node_h * buckets = (struct node_h *) calloc(k, sizeof(struct node_h));
     struct node_h * tmp;
     int m = 1 + max(v, n);
     for (int i = 0; i < n; i++)
@@ -63,17 +59,17 @@ void dSort(int * v, int n, int k)
         n: número de elementos de v
 
 */
-void insertNumber(struct head_h ** head_ref, int x)
+void insertNumber(struct node_h ** head_ref, int x)
 {
     struct node_h * newNumber = (struct node_h *) malloc(sizeof(struct node_h));
     newNumber->value = x;
     newNumber->next = NULL;
-    struct head_h * aux = head_ref;
-    while (aux->tail != NULL)
+    struct node_h * aux = head_ref;
+    while (aux->next != NULL)
     {
-        aux = aux->tail;
+        aux = aux->next;
     }
-    aux->tail = newNumber;
+    aux->next = newNumber;
 }
 
 /*
@@ -84,11 +80,11 @@ void insertNumber(struct head_h ** head_ref, int x)
         k: número de elementos de v
 
 */
-void lSort(List * v)
+void lSort(struct node_h * v)
 {
-    List * i, * j, * aux;
+    struct node_h * i, * j, * aux;
 
-    i = v;
+    i = v->next;
     while (i->next != NULL)
     {
         j = i;
