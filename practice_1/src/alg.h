@@ -12,7 +12,25 @@ void mSort(int *, int, int);
 void dSort(int *, int, int);
 void cSort(int * v, int);
 void hSort(int *, int);
-void quineMcCluskey();
+
+/*
+    Future algorithms I want to cover
+
+    Sorts:
+        Radix Sort
+        Parallel versions of Quick Sort and Merge Sort
+    
+    Compression:
+        Huffman Coding
+    
+    Path finding:
+        Dijkstra
+        A*
+
+    Other:
+        Quine McCluskey Algorithm
+        Longest Common Subsequence
+*/
 
 void swap(int *, int *);
 void printArray(int *, int);
