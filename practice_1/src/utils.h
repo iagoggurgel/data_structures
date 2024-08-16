@@ -3,8 +3,9 @@
 
 #include <time.h>
 #include <stdio.h>
-#include "alg.h"
-#include "input.h"
+#include <unistd.h>
+#include "algorithms/alg.h"
+#include "input/input.h"
 #define clear() system("clear || cls")
 #define BOLD "\e[1m"
 #define RESET "\e[m"

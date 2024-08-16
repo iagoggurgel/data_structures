@@ -1,5 +1,8 @@
 
-SRC_FILES=src/main.c src/insertion_sort.c src/heap_sort.c src/distribution_sort.c src/merge_sort.c src/quick_sort.c src/selection_sort.c src/input.c src/utils.c
+ALG_DIR=src/algorithms/
+INPUT_DIR=src/input/
+
+SRC_FILES=src/main.c $(ALG_DIR)*.c $(INPUT_DIR)input.c src/utils.c
 
 BUILD_DIR=build
 

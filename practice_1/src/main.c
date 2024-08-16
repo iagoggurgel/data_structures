@@ -1,14 +1,5 @@
 #include "utils.h"
 
-int main(int argc, char * argv[])
-{
-    void * sortingAlgorithm;
-
-    
-    return EXIT_SUCCESS;
-}
-
-
 void help()
 {
     clear();
@@ -28,4 +19,11 @@ void help()
     printf("\t\truns tests on Distribution Sort Algorithm and writes results to 'results/distribution.csv'.\n\n");
     printf("\t-Q %sQUICK SORT%s\n", BOLD, RESET);
     printf("\t\truns tests on Quick Sort Algorithm and writes results to 'results/quick.csv'.\n\n");
+}
+
+int main(int argc, char * argv[])
+{
+    void * sortingAlgorithm;
+    
+    return EXIT_SUCCESS;
 }
