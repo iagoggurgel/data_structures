@@ -1,5 +1,6 @@
 #include "utils.h"
 
+<<<<<<< HEAD
 int main(int argc, char * argv[])
 {
 
@@ -75,6 +76,8 @@ int checkOpt(int argc, char * argv[])
 }
 
 
+=======
+>>>>>>> 7bce2066329d43fd6ab19e28be89474302937fab
 void help()
 {
     clear();
@@ -94,4 +97,11 @@ void help()
     printf("\t\truns tests on Distribution Sort Algorithm and writes results to 'results/distribution.csv'.\n\n");
     printf("\t-Q %sQUICK SORT%s\n", BOLD, RESET);
     printf("\t\truns tests on Quick Sort Algorithm and writes results to 'results/quick.csv'.\n\n");
+}
+
+int main(int argc, char * argv[])
+{
+    void * sortingAlgorithm;
+    
+    return EXIT_SUCCESS;
 }

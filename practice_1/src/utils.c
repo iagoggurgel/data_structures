@@ -94,9 +94,9 @@ int isSorted(int * v, int n)
       goto notSorted;
   }
 
-  return 0;
+  return EXIT_SUCCESS;
 
-  notSorted: return -1;
+  notSorted: return EXIT_FAILURE;
 }
 
 /*

@@ -1,7 +1,5 @@
 #include "alg.h"
 
-
-
 /*
     Algoritmo de ordenação Selection Sort
 

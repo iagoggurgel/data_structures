@@ -4,12 +4,12 @@ The algorithms I want to use are:
 
 ## Stable:
 
-1. Distribution Sort To-do
+1. Distribution Sort OK
 2. Insertion Sort OK
-3. Merge Sort To-do
-4. Selection Sort To-do
-5. Quick Sort To-do
-6. Counting Sort
+3. Merge Sort OK
+4. Selection Sort OK
+5. Quick Sort OK
+6. Counting Sort Malfunctions
 
 ## Unstable:
 
