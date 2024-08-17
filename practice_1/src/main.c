@@ -2,10 +2,76 @@
 
 int main(int argc, char * argv[])
 {
-    void * sortingAlgorithm;
 
+    const int testCases = 10000;
+    void * sortingAlgorithm;
+    if (argc != 2)
+    {
+        exit(EXIT_FAILURE);
+    }
+    
+    switch (checkOpt(argc, argv))
+    {
+    case 0:
+        sortingAlgorithm = &hSort;
+        break;
+    
+    case 1:
+        sortingAlgorithm = &mSort;
+        break;
+
+    case 2:
+        sortingAlgorithm = &sSort;
+        break;
+
+    case 3:
+        sortingAlgorithm = &iSort;
+        break;
+
+    case 4:
+        sortingAlgorithm = &dSort;
+        break;
+
+    case 5:
+        sortingAlgorithm = &qSort;
+        break;
+
+    default:
+        exit(EXIT_FAILURE);
+    }
+
+    int * inputArray = generateInput();
+    
     
     return EXIT_SUCCESS;
+}
+
+int checkOpt(int argc, char * argv[])
+{
+    if(!strcmp("-H", argv[1]))
+    {
+        return 0;
+    }
+    else if(!strcmp("-M", argv[1]))
+    {
+        return 1;
+    }
+    else if(!strcmp("-S", argv[1]))
+    {
+        return 2;
+    }
+    else if(!strcmp("-I", argv[1]))
+    {
+        return 3;
+    }
+    else if(!strcmp("-D", argv[1]))
+    {
+        return 4;
+    }
+    else if(!strcmp("-Q", argv[1]))
+    {
+        return 5;
+    }
 }
 
 

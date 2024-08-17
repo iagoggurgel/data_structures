@@ -7,6 +7,7 @@
 #include <string.h>
 
 int * generateInput();
+int * generateSubArray(int *, int);
 
 static const int input_n = 50000000;
 

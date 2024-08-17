@@ -11,3 +11,8 @@ int * generateInput()
 
     return inputArray;
 }
+
+int * generateSubArray(int * v, int n)
+{
+    
+}

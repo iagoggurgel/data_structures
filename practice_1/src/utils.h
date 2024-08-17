@@ -3,6 +3,7 @@
 
 #include <time.h>
 #include <stdio.h>
+#include <string.h>
 #include "alg.h"
 #include "input.h"
 #define clear() system("clear || cls")
