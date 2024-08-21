@@ -3,14 +3,14 @@
 
 
 #include <stdlib.h>
-#include "/home/iagoggurgel/Documents/Notebook/Study/data_structures/practice_1/src/utils.h"
+#include "../utils.h"
 
 void iSort(int *, int);
 void sSort(int *, int);
 void qSort(int *, int, int);
 void mSort(int *, int, int);
 void dSort(int *, int, int);
-// void cSort(int *, int); Needs fixing
+void cSort(int *, int); // Needs fixing
 void hSort(int *, int);
 // void quine(int *, int); Needs implementation
 

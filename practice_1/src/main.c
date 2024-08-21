@@ -1,53 +1,62 @@
 #include "utils.h"
 
-<<<<<<< HEAD
 int main(int argc, char * argv[])
 {
 
     const int testCases = 10000;
-    void * sortingAlgorithm;
+    
     if (argc != 2)
     {
         exit(EXIT_FAILURE);
     }
     
-    switch (checkOpt(argc, argv))
+    switch (checkOpt(argv))
     {
     case 0:
-        sortingAlgorithm = &hSort;
+        void (*sortingAlgorithm)(int *, int) = &hSort;
         break;
     
     case 1:
-        sortingAlgorithm = &mSort;
+        void (*sortingAlgorithm)(int *, int, int) = &mSort;
         break;
 
     case 2:
-        sortingAlgorithm = &sSort;
+        void (*sortingAlgorithm)(int *, int) = &sSort;
         break;
 
     case 3:
-        sortingAlgorithm = &iSort;
+        void (*sortingAlgorithm)(int *, int) = &iSort;
         break;
 
     case 4:
-        sortingAlgorithm = &dSort;
+        void (*sortingAlgorithm)(int *, int, int) = &dSort;
         break;
 
     case 5:
-        sortingAlgorithm = &qSort;
+        void (*sortingAlgorithm)(int *, int, int) = &qSort;
         break;
 
     default:
         exit(EXIT_FAILURE);
     }
 
-    int * inputArray = generateInput();
-    
+    int * inputArray = generateInputArray();
+
+    sortingAlgorithm(inputArray, input_n);
+
+    if( !isSorted(inputArray, input_n) )
+    {
+        printf("The array has been sorted correctly!");
+    }
+    else
+    {
+        printf("The array has not been sorted correctly!");
+    }
     
     return EXIT_SUCCESS;
 }
 
-int checkOpt(int argc, char * argv[])
+int checkOpt(char * argv[])
 {
     if(!strcmp("-H", argv[1]))
     {
@@ -73,11 +82,11 @@ int checkOpt(int argc, char * argv[])
     {
         return 5;
     }
+
+    return -1;
 }
 
 
-=======
->>>>>>> 7bce2066329d43fd6ab19e28be89474302937fab
 void help()
 {
     clear();
@@ -97,11 +106,4 @@ void help()
     printf("\t\truns tests on Distribution Sort Algorithm and writes results to 'results/distribution.csv'.\n\n");
     printf("\t-Q %sQUICK SORT%s\n", BOLD, RESET);
     printf("\t\truns tests on Quick Sort Algorithm and writes results to 'results/quick.csv'.\n\n");
-}
-
-int main(int argc, char * argv[])
-{
-    void * sortingAlgorithm;
-    
-    return EXIT_SUCCESS;
 }

@@ -89,7 +89,7 @@ int isSorted(int * v, int n)
   int i;
   for (i = 0; i < n - 1; i++)
   {
-    if (v[i] > v[n + 1])
+    if (v[i] > v[i + 1])
       // Se há v[i] maior que seu sucessor, o vetor não está ordenado.
       goto notSorted;
   }
