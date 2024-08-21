@@ -14,7 +14,7 @@ void sSort(int * v, int n)
     for (int i = 0; i < n - 1; i++)
     {
         min = i;
-        for (int j = i + 1; j < n; i++)
+        for (int j = i + 1; j < n; j++)
         {
             if (v[j] < v[min])
             {
