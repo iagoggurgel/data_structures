@@ -7,9 +7,21 @@ struct timespec after;
 /*
   Função auxiliar que printa a diferença do tempo inicial e tempo final.
 */
-void diffTime()
+void diffTime(FILE * file, int n)
 {
-  printf("%ld.%ld\n", after.tv_sec - before.tv_sec ,after.tv_nsec - before.tv_nsec);
+  long seconds, nanoseconds;
+  double texec;
+
+  seconds = after.tv_sec - before.tv_sec;
+  nanoseconds = after.tv_nsec - before.tv_nsec;
+
+  if (nanoseconds < 0) {
+    seconds -= 1;
+    nanoseconds += 1000000000;
+  }
+
+  texec = seconds + nanoseconds / 1e9;
+  fprintf(file, "%d,%.9f\n", n , texec);
 }
 
 /*
@@ -91,12 +103,10 @@ int isSorted(int * v, int n)
   {
     if (v[i] > v[i + 1])
       // Se há v[i] maior que seu sucessor, o vetor não está ordenado.
-      goto notSorted;
+      return EXIT_FAILURE;
   }
 
   return EXIT_SUCCESS;
-
-  notSorted: return EXIT_FAILURE;
 }
 
 /*
@@ -137,4 +147,73 @@ int min(int * v, int n)
     }
   }
   return min;
+}
+
+
+/*
+  Função para 
+
+*/
+int checkOpt(char * argv[])
+{
+    if(!strcmp("-H", argv[1]))
+    {
+        return 0;
+    }
+    else if(!strcmp("-M", argv[1]))
+    {
+        return 1;
+    }
+    else if(!strcmp("-S", argv[1]))
+    {
+        return 2;
+    }
+    else if(!strcmp("-I", argv[1]))
+    {
+        return 3;
+    }
+    else if(!strcmp("-D", argv[1]))
+    {
+        return -1;
+    }
+    else if(!strcmp("-Q", argv[1]))
+    {
+        return 5;
+    }
+    else if(!strcmp("-C", argv[1]))
+    {
+      return 6;
+    }
+    else if(!strcmp("-All", argv[1]))
+    {
+      return 7;
+    }
+
+    return -1;
+}
+
+
+void help()
+{
+    clear();
+    printf("ALGORITHMS RESEARCH\n\n");
+    printf("%sDESCRIPTION%s\n", BOLD, RESET);
+    printf("\trun the program using at least one option for an algorithm. When the program\n\tfinishes, it will write to .csv file named by the algorithm.\n\n");
+    printf("%sOPTIONS%s\n", BOLD, RESET);
+    printf("\t-M %sMERGE SORT%s\n", BOLD, RESET);
+    printf("\t\truns tests on Merge Sort Algorithm and writes results to 'results/mergeSort.csv'.\n\n");
+    printf("\t-H %sHEAP SORT%s\n", BOLD, RESET);
+    printf("\t\truns tests on Heap Sort Algorithm and writes results to 'results/heapSort.csv'.\n\n");
+    printf("\t-S %sSELECTION SORT%s\n", BOLD, RESET);
+    printf("\t\truns tests on Selection Sort Algorithm and writes results to 'results/selectionSort.csv'.\n\n");
+    printf("\t-I %sINSERTION SORT%s\n", BOLD, RESET);
+    printf("\t\truns tests on Insertion Sort Algorithm and writes results to 'results/insertionSort.csv'.\n\n");
+    //printf("\t-D %sDISTRIBUTION SORT%s\n", BOLD, RESET);
+    //printf("\t\truns tests on Distribution Sort Algorithm and writes results to 'results/distribution.csv'.\n\n");
+    printf("\t-Q %sQUICK SORT%s\n", BOLD, RESET);
+    printf("\t\truns tests on Quick Sort Algorithm and writes results to 'results/quickSort.csv'.\n\n");
+    printf("\n\n\n\n");
+
+    printf("\t-All %sRUNS ALL ALGORITHMS%s\n", BOLD, RESET);
+    printf("\t\truns tests on all Algorithms and writes results to 'results/<algorithm>.csv'.\n\n");
 }

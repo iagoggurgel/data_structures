@@ -1,6 +1,5 @@
 #include "alg.h"
 
-
 /*
   Algoritmo de ordenação Insertion Sort
 
@@ -23,4 +22,48 @@ void iSort(int * v, int n)
     }
     i += 1;
   }
+}
+
+/*
+  Função para realizar os testes do algoritmo de ordenação Insertion Sort
+*/
+void testInsertionSort()
+{
+    
+    int * inputArray = generateInputArray();
+
+    int * subArray;
+
+    FILE * fp = fopen("results/insertionSort.csv", "w");
+
+    fprintf(fp, "n,t\n");
+
+    for (int i = 0; i < (TESTCASES >> 2); i++)
+    {
+        int numberOfInputs = ((((GROWTHRATE >> 2) * i) + 1) % 65536);
+
+        subArray = generateSubArray(inputArray, numberOfInputs);
+
+        startClock();
+        iSort(subArray, numberOfInputs);
+        endClock();
+
+        if (!isSorted(subArray, numberOfInputs))
+        {
+            diffTime(fp, numberOfInputs);
+        }
+        else
+        {
+            printArray(subArray, numberOfInputs);
+            exit(EXIT_FAILURE);
+        }
+        
+
+        free(subArray);
+    }
+
+    fclose(fp);
+
+    free(inputArray);
+    
 }

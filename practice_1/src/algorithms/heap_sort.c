@@ -63,3 +63,47 @@ void heapify(int * v, int n, int i)
         heapify(v, n, largest);
     }
 }
+
+/*
+  Função para realizar os testes do algoritmo de ordenação Heap Sort
+*/
+void testHeapSort()
+{
+    
+    int * inputArray = generateInputArray();
+
+    int * subArray;
+
+    FILE * fp = fopen("results/heapSort.csv", "w");
+
+    fprintf(fp, "n,t\n");
+
+    for (int i = 0; i < TESTCASES; i++)
+    {
+        int numberOfInputs = (((GROWTHRATE * i) + 1) % input_n);
+
+        subArray = generateSubArray(inputArray, numberOfInputs);
+
+        startClock();
+        hSort(subArray, numberOfInputs);
+        endClock();
+
+        if (!isSorted(subArray, numberOfInputs))
+        {
+            diffTime(fp, numberOfInputs);
+        }
+        else
+        {
+            printArray(subArray, numberOfInputs);
+            exit(EXIT_FAILURE);
+        }
+        
+
+        free(subArray);
+    }
+
+    fclose(fp);
+
+    free(inputArray);
+
+}

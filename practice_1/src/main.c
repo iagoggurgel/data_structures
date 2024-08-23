@@ -2,9 +2,6 @@
 
 int main(int argc, char * argv[])
 {
-
-    const int testCases = 10000;
-    
     if (argc != 2)
     {
         exit(EXIT_FAILURE);
@@ -13,97 +10,65 @@ int main(int argc, char * argv[])
     switch (checkOpt(argv))
     {
     case 0:
-        void (*sortingAlgorithm)(int *, int) = &hSort;
+        testHeapSort();
         break;
     
     case 1:
-        void (*sortingAlgorithm)(int *, int, int) = &mSort;
+        testMergeSort();
         break;
 
     case 2:
-        void (*sortingAlgorithm)(int *, int) = &sSort;
+        testSelectionSort();
         break;
 
     case 3:
-        void (*sortingAlgorithm)(int *, int) = &iSort;
+        testInsertionSort();
         break;
 
     case 4:
-        void (*sortingAlgorithm)(int *, int, int) = &dSort;
+        // testDistributionSort();
         break;
 
     case 5:
-        void (*sortingAlgorithm)(int *, int, int) = &qSort;
+        testQuickSort();
+        break;
+
+    case 6:
+        testCountingSort();
+        break;
+
+    case 7:
+        printf("%sSTARTING TO RUN COUNTING SORT!%s\n", BOLD, RESET);
+        testCountingSort();
+        printf("%sCOUNTING SORT RAN SUCCESSFULLY!%s\n", BOLD, RESET);
+
+        printf("%sSTARTING TO RUN HEAP SORT!%s\n", BOLD, RESET);
+        testHeapSort();
+        printf("%sHEAP SORT RAN SUCCESSFULLY!%s\n", BOLD, RESET);
+
+        printf("%sSTARTING TO RUN MERGE SORT!%s\n", BOLD, RESET);
+        testMergeSort();
+        printf("%sMERGE SORT RAN SUCCESSFULLY!%s\n", BOLD, RESET);
+
+        printf("%sSTARTING TO RUN QUICK SORT!%s\n", BOLD, RESET);
+        testQuickSort();
+        printf("%sQUICK SORT RAN SUCCESSFULLY!%s\n", BOLD, RESET);
+
+        printf("%sSTARTING TO RUN INSERTION SORT!%s\n", BOLD, RESET);
+        testInsertionSort();
+        printf("%sINSERTION SORT RAN SUCCESSFULLY!%s\n", BOLD, RESET);
+
+        printf("%sSTARTING TO RUN SELECTION SORT!%s\n", BOLD, RESET);
+        testSelectionSort();
+        printf("%sSELECTION SORT RAN SUCCESSFULLY!%s\n", BOLD, RESET);
+
         break;
 
     default:
+        help();
         exit(EXIT_FAILURE);
-    }
-
-    int * inputArray = generateInputArray();
-
-    sortingAlgorithm(inputArray, input_n);
-
-    if( !isSorted(inputArray, input_n) )
-    {
-        printf("The array has been sorted correctly!");
-    }
-    else
-    {
-        printf("The array has not been sorted correctly!");
+        break;
     }
     
     return EXIT_SUCCESS;
-}
-
-int checkOpt(char * argv[])
-{
-    if(!strcmp("-H", argv[1]))
-    {
-        return 0;
-    }
-    else if(!strcmp("-M", argv[1]))
-    {
-        return 1;
-    }
-    else if(!strcmp("-S", argv[1]))
-    {
-        return 2;
-    }
-    else if(!strcmp("-I", argv[1]))
-    {
-        return 3;
-    }
-    else if(!strcmp("-D", argv[1]))
-    {
-        return 4;
-    }
-    else if(!strcmp("-Q", argv[1]))
-    {
-        return 5;
-    }
-
-    return -1;
-}
-
-
-void help()
-{
-    clear();
-    printf("ALGORITHMS RESEARCH\n\n");
-    printf("%sDESCRIPTION%s\n", BOLD, RESET);
-    printf("\trun the program using at least one option for an algorithm. When the program\n\tfinishes, it will write to .csv file named by the algorithm.\n\n");
-    printf("%sOPTIONS%s\n", BOLD, RESET);
-    printf("\t-M %sMERGE SORT%s\n", BOLD, RESET);
-    printf("\t\truns tests on Merge Sort Algorithm and writes results to 'results/merge.csv'.\n\n");
-    printf("\t-H %sHEAP SORT%s\n", BOLD, RESET);
-    printf("\t\truns tests on Heap Sort Algorithm and writes results to 'results/heap.csv'.\n\n");
-    printf("\t-S %sSELECTION SORT%s\n", BOLD, RESET);
-    printf("\t\truns tests on Selection Sort Algorithm and writes results to 'results/selection.csv'.\n\n");
-    printf("\t-I %sINSERTION SORT%s\n", BOLD, RESET);
-    printf("\t\truns tests on Insertion Sort Algorithm and writes results to 'results/insertion.csv'.\n\n");
-    printf("\t-D %sDISTRIBUTION SORT%s\n", BOLD, RESET);
-    printf("\t\truns tests on Distribution Sort Algorithm and writes results to 'results/distribution.csv'.\n\n");
-    printf("\t-Q %sQUICK SORT%s\n", BOLD, RESET);
-    printf("\t\truns tests on Quick Sort Algorithm and writes results to 'results/quick.csv'.\n\n");
 }

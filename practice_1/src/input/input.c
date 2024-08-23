@@ -30,10 +30,10 @@ int * generateInputArray()
     Algoritmo de geração de SubArray de inteiros pseudo-aleatórios baseados no Array geral.
 
     Entradas:
-        n: número de posições do SubArray
         inputArray: Array de inteiros pseudo-aleatórios gerado por generateInputArray
+        n: número de posições do SubArray
 */
-int * generateSubArray(int n, int * inputArray)
+int * generateSubArray(int * inputArray, int n)
 {
     int * inputSubArray = (int *) malloc(sizeof(int) * n);
     int arrayPos;
@@ -46,7 +46,6 @@ int * generateSubArray(int n, int * inputArray)
     for (int i = 0; i < n; i++)
     {
         arrayPos = rand() % input_n;
-        printf("%d\n", arrayPos);
         inputSubArray[i] = inputArray[arrayPos];
     }
 

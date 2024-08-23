@@ -10,10 +10,17 @@
 #define BOLD "\e[1m"
 #define RESET "\e[m"
 
-void diffTime();
+#define TESTCASES 8192
+#define GROWTHRATE 128
+
+void diffTime(FILE *, int);
 void startClock();
 void endClock();
+
+// Help
 void help();
+
+// Utility for main function
 int checkOpt(char **);
 
 

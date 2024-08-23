@@ -12,11 +12,9 @@ struct node_h {
     struct node_h * next;
 };
 
-
 void push(struct node_h **, int);
 void lSort(struct node_h **);
 void printNodes(struct node_h *);
-
 
 /*
     Algoritmo de ordenação Distribution Sort (Bucket Sort)
@@ -133,4 +131,49 @@ void lSort(struct node_h ** node)
         }
         i = i->next;
     }
+}
+
+/*
+  Função para realizar os testes do algoritmo de ordenação Distribution Sort
+*/
+void testDistributionSort()
+{
+    
+    int * inputArray = generateInputArray();
+
+    int * subArray;
+
+    FILE * fp = fopen("results/distributionSort.csv", "w");
+
+    fprintf(fp, "n,t\n");
+
+    for (int i = 0; i < TESTCASES; i++)
+    {
+        int numberOfInputs = (((30 * i) + 1) % input_n);
+
+        subArray = generateSubArray(inputArray, numberOfInputs);
+
+        startClock();
+        dSort(subArray, 0, 1);
+        endClock();
+
+        if (!isSorted(subArray, numberOfInputs))
+        {
+            diffTime(fp, numberOfInputs);
+        }
+        else
+        {
+            printArray(subArray, numberOfInputs);
+            goto error;
+        }
+        
+
+        free(subArray);
+    }
+
+    free(inputArray);
+
+    error:
+        exit(EXIT_FAILURE);
+
 }

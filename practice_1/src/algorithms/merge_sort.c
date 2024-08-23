@@ -1,5 +1,6 @@
 #include "alg.h"
 
+void merge(int *, int, int, int);
 
 /*
     Função auxiliar para intercalar os sub-vetores.
@@ -75,3 +76,48 @@ void mSort(int * v, int l, int r)
         merge(v, l, m, r); 
     } 
 } 
+
+
+/*
+  Função para realizar os testes do algoritmo de ordenação Merge Sort
+*/
+void testMergeSort()
+{
+    
+    int * inputArray = generateInputArray();
+
+    int * subArray;
+
+    FILE * fp = fopen("results/mergeSort.csv", "w");
+
+    fprintf(fp, "n,t\n");
+
+    for (int i = 0; i < TESTCASES; i++)
+    {
+        int numberOfInputs = (((GROWTHRATE * i) + 1) % input_n);
+
+        subArray = generateSubArray(inputArray, numberOfInputs);
+
+        startClock();
+        mSort(subArray, 0, numberOfInputs - 1);
+        endClock();
+
+        if (!isSorted(subArray, numberOfInputs))
+        {
+            diffTime(fp, numberOfInputs);
+        }
+        else
+        {
+            printArray(subArray, numberOfInputs);
+            exit(EXIT_FAILURE);
+        }
+        
+
+        free(subArray);
+    }
+
+    fclose(fp);
+
+    free(inputArray);
+
+}

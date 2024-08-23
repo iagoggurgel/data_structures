@@ -1,5 +1,6 @@
 #include "alg.h"
 
+
 /*
     Algoritmo de ordenação Selection Sort
 
@@ -26,4 +27,48 @@ void sSort(int * v, int n)
             swap(&v[i], &v[min]);
         }
     }
+}
+
+/*
+  Função para realizar os testes do algoritmo de ordenação Selection Sort
+*/
+void testSelectionSort()
+{
+    
+    int * inputArray = generateInputArray();
+
+    int * subArray;
+
+    FILE * fp = fopen("results/selectionSort.csv", "w");
+
+    fprintf(fp, "n,t\n");
+
+    for (int i = 0; i < (TESTCASES >> 2); i++)
+    {
+        int numberOfInputs = ((((GROWTHRATE >> 2) * i) + 1) % 65536);
+
+        subArray = generateSubArray(inputArray, numberOfInputs);
+
+        startClock();
+        sSort(subArray, numberOfInputs);
+        endClock();
+
+        if (!isSorted(subArray, numberOfInputs))
+        {
+            diffTime(fp, numberOfInputs);
+        }
+        else
+        {
+            printArray(subArray, numberOfInputs);
+            exit(EXIT_FAILURE);
+        }
+        
+
+        free(subArray);
+    }
+
+    fclose(fp);
+
+    free(inputArray);
+
 }

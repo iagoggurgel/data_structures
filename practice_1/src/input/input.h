@@ -8,9 +8,8 @@
 #include <time.h>
 
 int * generateInputArray();
-int * generateSubArray(int, int *);
+int * generateSubArray(int *, int);
 
-// 1048576
-static const int input_n = 262144; // Allocates exactly 1MB of memory for a random list of integers.
+static const int input_n = 1048576; // Allocates exactly 4MB of memory for a random list of integers.
 
 #endif
