@@ -146,9 +146,9 @@
 \include{content/commands}       % Comandos próprios
 
 \definirtitulo{%
-Relatório Técnico sobre a disciplina de Estrutura de Dados}
+Relatório técnico sobre a disciplina de Estrutura de Dados}
 
-\definirtitulocurto{Relatório Técnico sobre Estrutura de Dados}
+\definirtitulocurto{Relatório sobre Estrutura de Dados}
 
 % Numeração de linhas para auxiliar nas correções (comentar na versão final)
 %\linenumbers
@@ -162,7 +162,7 @@ Relatório Técnico sobre a disciplina de Estrutura de Dados}
   \include{content/dedication} % Dedicatória
   % \include{content/thanks}     % Agradecimentos
 \fi
-\include{content/abstract}     % Resumo do trabalho em português e em inglês
+%\include{content/abstract}     % Resumo do trabalho em português e em inglês
 
 \if\doctype\doctypem           % Se é do tipo monografia
 \frontmatter
@@ -174,10 +174,10 @@ Relatório Técnico sobre a disciplina de Estrutura de Dados}
 
 % Essas listas são opicionais nos relatórios, use-as quando a quantidade e a
 % conveniência forem o caso.
-\limparpagina
-\renewcommand{\listtheoremname}{Lista de Algoritmos}
-\listoftheorems[ignoreall,show={algoritmo}]
-\addcontentsline{toc}{chapter}{\listtheoremname}
+%\limparpagina
+%\renewcommand{\listtheoremname}{Lista de Algoritmos}
+%\listoftheorems[ignoreall,show={algoritmo}]
+%\addcontentsline{toc}{chapter}{\listtheoremname}
 
 %\limparpagina
 %\renewcommand{\listtheoremname}{Lista de Definições}
@@ -210,18 +210,19 @@ Relatório Técnico sobre a disciplina de Estrutura de Dados}
 \include{content/chapter/1/text} % Introdução (apresentação do trabalho)
 \include{content/chapter/2/text} % Análise de algoritmos de Ordenação
 \include{content/chapter/3/text} % Análise de algoritmos de Árvores e Tabelas de Dispersão
-\include{content/chapter/4/text} % Grafos
-\include{content/chapter/5/text} % Conclusão
+% \include{content/chapter/4/text} % Grafos
+% \include{content/chapter/5/text} % Conclusão
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% APÊNDICE, BILIOGRAFIA E ÍNDICE REMISSIVO                                %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
-\include{content/appendix/1/text}
-\include{content/appendix/2/text}
-\include{content/appendix/3/text}
-\include{content/appendix/4/text}
-\include{content/appendix/5/text}
+%\include{content/appendix/1/text}
+%\include{content/appendix/2/text}
+%\include{content/appendix/3/text}
+%\include{content/appendix/4/text}
+%\include{content/appendix/5/text}
+%\include{content/appendix/6/text}
 
 \if\doctype\doctypem           % Se é do tipo monografia
 \backmatter

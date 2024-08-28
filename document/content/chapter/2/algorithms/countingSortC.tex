@@ -1,0 +1,39 @@
+\begin{lstlisting}[style=CStyle]
+void cSort(unsigned char * v, int n)
+{
+    int i, j;
+
+    int size = __UINT8_MAX__;
+
+    unsigned char B[n];
+    int C[size + 1];
+
+    for (i = 0; i < size + 1; i++)
+    {
+        C[i] = 0;
+    }
+
+    for (j = 0; j < n; j++)
+    {
+        C[v[j]]++;
+    }
+
+    for (i = 1; i <= size; i++)
+    {
+        C[i] = C[i] + C[i - 1];
+    }
+
+    for (j = n - 1; j >= 0; j--)
+    {
+        B[C[v[j]] - 1] = v[j];
+        C[v[j]]--;
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        v[i] = B[i];
+    }
+
+}
+\end{lstlisting}
+        

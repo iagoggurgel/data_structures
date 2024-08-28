@@ -1,0 +1,11 @@
+\begin{pseudocode}[caption={Algoritmo de ordenação por inserção}, label={insertionSortP}]
+INSERTION-SORT(A)
+n $\gets$ len(A)
+i $\gets$ 2
+while i < n do
+    j $\gets$ i
+    while j > 1 and A[j - 1] > A[j]
+        swap(A[j - 1], A[j])
+        j $\gets$ j - 1
+    i $\gets$ i + 1
+\end{pseudocode}

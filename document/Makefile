@@ -3,15 +3,17 @@ CONTENT = content
 
 default: all
 
+gnu:
+	gnuplot-qt gnuplot/*.gnu
+
 all:
-	gnuplot gnuplot/*.gnu
-	latex ${ARQNAME}
+	pdflatex ${ARQNAME} 
 	makeindex ${ARQNAME}
 	bibtex ${ARQNAME}
-	latex ${ARQNAME}
-	latex ${ARQNAME}
-	latex ${ARQNAME}
-	dvips -Ppdf -t a4 -o ${ARQNAME}.ps ${ARQNAME}.dvi
+	pdflatex ${ARQNAME} 
+	pdflatex ${ARQNAME} 
+	pdflatex ${ARQNAME} 
+	dvips -Ppdf -t a4 -o ${ARQNAME}.ps ${ARQNAME}.dvi 
 	ps2pdf -dMaxSubsetPct=100 -dCompatibilityLevel=1.2 -dSubsetFonts=true -dEmbedAllFonts=true -sPAPERSIZE=a4 ${ARQNAME}.ps ${ARQNAME}.pdf
 
 clean:
@@ -27,6 +29,7 @@ clean:
 		${ARQNAME}.lo*\
 		${ARQNAME}.ps\
 		${ARQNAME}.dvi
+	cd image; rm -rf *.pdf
 	cd ${CONTENT}; rm -f *.aux
 	cd ${CONTENT}/chapter; for i in `ls`; do rm -f $$i/*.aux; done
 	cd ${CONTENT}/appendix; for i in `ls`; do rm -f $$i/*.aux; done

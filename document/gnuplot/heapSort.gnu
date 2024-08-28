@@ -1,10 +1,13 @@
-set terminal svg size 1920,1080
-set output "image/graphics/heapSort.svg"
+set terminal png size 1920,1080
+set output "image/graphics/heapSort.png"
 
 set datafile separator ","
 set title "Gŕafico de tempo de execução para número de entradas"
 set xlabel "Número de entradas"
-set ylabel "T(n)"
+set ylabel "T(n) em segundos"
 set grid
 
-plot "../practice_1/results/heapSort.csv" using 1:2 with linespoints title "Tempo de execução"
+f(x) = x * log(x) / log(2) / 10e7
+
+plot "../practice_1/results/heapSort.csv" using 1:2 with linespoints title "Tempo de execução", \
+    f(x) with lines title "f(n) = n log n"

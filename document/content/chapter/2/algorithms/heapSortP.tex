@@ -1,0 +1,10 @@
+\begin{pseudocode}[caption={Algoritmo de ordenação utilizando uma \textit{Heap}}, label={heapSortP}]
+HEAP-SORT(A)
+n $\gets$ len(A)
+BUILD-MAX-HEAP(A)
+i $\gets$ n - 1
+while i > 1 do
+    swap(A[0], A[i])
+    MAX-HEAPIFY(A)
+    i $\gets$ i - 1
+\end{pseudocode}

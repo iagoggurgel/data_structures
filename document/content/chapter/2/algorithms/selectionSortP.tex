@@ -1,0 +1,14 @@
+\begin{pseudocode}[caption={Algoritmo de ordenação por seleção}, label={selectionSortP}]
+SELECTION-SORT(A)
+n $\gets$ len(A)
+i $\gets$ 1
+while i < n - 1 do
+    min $\gets$ i
+    j $\gets$ i + 1
+    while j < n do
+        if A[j] < A[min] then
+            min $\gets$ j
+    if i $\neq$ min then
+        swap(A[i], A[min])
+    i $\gets$ i + 1
+\end{pseudocode}

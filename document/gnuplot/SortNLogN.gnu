@@ -1,5 +1,5 @@
-set terminal svg size 1920,1080
-set output "image/graphics/Combined.svg"
+set terminal png size 1920,1080
+set output "image/graphics/Combined.png"
 
 set datafile separator ","
 set title "Gŕafico de tempo de execução para número de entradas"

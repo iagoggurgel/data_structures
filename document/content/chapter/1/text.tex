@@ -6,9 +6,9 @@
 \label{cap:1:intro}
 
 \citacao{%
-If knowledge can create problems,\\
-it is not through ignorance that we can solve them.}
-{Isaac Asimov}
+He who knows all the answers has \\ not been asked all the questions.}
+{Confucius}
+
 
 O estudo e análise de algoritmos é fundamental para o desenvolvimento do conhecimento
 no estudo da Computação. Para isso, foi realizado um estudo baseado nos conteúdos
@@ -31,7 +31,7 @@ o mesmo pode ser definido de maneira formal como: \\
 \textbf{Output: } Uma reordenação $(a_1, a_2, a_3,\ldots, a_n)$ da sequência para qual \\
 $a_1 \leq a_2 \leq a_3 \leq \cdots \leq a_n$. \\
 
-Para medir sua importância, podemos visualizar algumas das aplicações dos algoritmos no mundo
+Para medir a importância dos algoritmos na sociedade, podemos visualizar algumas das suas aplicações no mundo
 real:
 
 \begin{enumerate}
@@ -52,9 +52,101 @@ problema.
 \section{O que são estruturas de dados?}
 
 As estruturas de dados são, de acordo com \cite{cormen2022algorithms}, formatos de armazenamento de dados
-que permitem fácil acesso e modificação.
+que permitem fácil acesso e modificação. Também, permitem organizar os dados de maneiras diferentes, possibilitando assim que
+algoritmos manipulem os dados de maneiras diferentes. \cite{narasimha2017data} discorre sobre a divisão das estruturas
+de dados em 2 tipos:
+
+\begin{itemize}
+    \item Estruturas de dados lineares: Onde os elementos são acessados de forma sequencial. Exemplos como: Listas encadeadas, Pilhas e Filas.
+    \item Estruturas de dados não-lineares: Onde os elementos são armazenados e acessados de forma não-linear. Exemplos: Árvores e grafos.
+\end{itemize}
 
 \section{Procedimento de análise de eficiência de um algoritmo}
+
+Para realizar a análise e medição de um algoritmo, é necessário compreender o algoritmo e seu contexto. Para isso, vamos
+tomar como exemplo o algoritmo de busca por um elemento em um vetor de forma linear. Esse algoritmo é nomeado de busca
+linear e pode ser visto em \ref{linearSearch}.
+
+\input{content/chapter/1/algorithms/linearSearch}
+
+Ao analisar o algoritmo apresentado, pode-se compreender que seu funcionamento é baseado em percorrer
+de forma sequencial e linear o vetor testando pelo elemento a ser buscado. Se esse elemento existir no vetor,
+seu índice será retornado como valor da função, se não, será retornado o valor nulo. Para medir sua eficiência,
+é necessário calcular seu tempo de execução. Para isso, é necessário perceber que a função de busca linear é
+intrinsicamente associada ao tamanho $n$ do vetor $A$ e a probabilidade da existência de $x$ no vetor. Imaginando que
+cada linha do pseudo-código apresentado em \ref{linearSearch} executa em um tempo específico, podemos pensar a
+equação \ref{cap:1:eq:linearSearch} para seu tempo de execução de pior caso. Observe que: para a linha z do código
+temos $C_z$ como seu tempo de execução.
+
+\begin{equation} \label{cap:1:eq:linearSearch}
+    T(n) = C_2 + \sum_{i=1}^{n}(C_3 + C_4) + C_5 + C_6
+\end{equation}
+
+Como definido em \cite{cormen2022algorithms}, pode-se expressar essa equação como $T(n) = an + b$, com $a = (C_3 + C_4)$
+e $b = (C_2 + C_5 + C_6)$ mas, antes que seja determinado a ordem do tempo de execução dessa função, é fundamental compreender
+a segunda determinante para sua métrica de eficiência. Um fator previamente mencionado foi que, para realizar-se a medida do tempo
+de execução, também é necessário compreender a probabilidade $p$ que um elemento qualquer $x$ esteja presente nesse vetor $A$, como
+apresenta a equação \ref{cap:1:eq:probabilityProof}.
+
+\begin{equation} \label{cap:1:eq:probabilityProof}
+    p = \frac{n}{\mathbb{Z}}
+\end{equation}
+
+Ajustando a equação $T(n) = an + b$ com a probabilidade $p$ de que $x$ pertença a $A$, percebe-se que:
+
+\begin{equation*} 
+    T(n) = (1 - p)(an + b) + p(an + b)
+\end{equation*}
+
+Com isso, é possível determinar que o tempo de execução do algoritmo é linear, já que a probabilidade $p$ de que
+$x$ pertença a $A$ é muito baixa, e mesmo que $x \in A$, a probabilidade de ocorrência do pior caso é mais alta
+que do melhor caso, sendo o pior caso $T(n) = an + b$ e o melhor caso $T(n) = 1$.
+
+\section{Notação assintótica e definições formais}
+
+Ao realizar a análise de um algoritmo, é possível perceber a sua razão de crescimento. O estudo das razões de
+crescimento do tempo de execução dos algoritmos é o estudo da eficiência assintótica de um algoritmo, isso é,
+qual a razão de um crescimento de um algoritmo qualquer quando o número de entradas do mesmo tende ao infinito.
+
+\subsection{Notação $O(n)$}
+
+A notação $O(n)$ indica o limite superior da razão de crescimento em uma função de comportamento assintótico.
+Para o caso do algoritmo \ref{linearSearch}, pode-se determinar que:
+
+\begin{equation*} 
+    O(n) = n^x \:  \forall \:  x \geq 1
+\end{equation*}
+
+Ou também, qualquer função com razão de crescimento superior ao cresimento linear pode ser usado como $O(n)$ da
+função de busca linear.
+
+\subsection{Notação $\Omega(n)$}
+
+A notação $\Omega(n)$ indica o limite inferior da razão de crescimento em uma função de comportamento assintótico.
+Para o caso do algoritmo \ref{linearSearch}, pode-se determinar que:
+
+\begin{equation*} 
+    \Omega(n) = n^x \:  \forall \:  x \leq 1
+\end{equation*}
+
+Ou também, qualquer função com razão de crescimento inferior ao cresimento linear pode ser usado como $\Omega(n)$ da
+função de busca linear.
+
+\subsection{Notação $\Theta(n)$}
+
+A notação $\Theta(n)$ indica o limite justo da razão de crescimento em uma função de comportamento assintótico.
+Determina-se $\Theta(n)$ de uma função qualquer provando que seu cresimento é tanto $O(f(n))$ como
+$\Omega(f(n))$, dessa forma, prova-se que essa função é $\Theta(f(n))$.
+Para o caso do algoritmo \ref{linearSearch}, pode-se determinar que:
+
+\begin{align*}
+    O(n) &= n \\
+    \Omega(n) &= n \\
+    \Theta(n) &= n
+\end{align*}
+
+Dessa forma, é possível determinar que $\Theta(n) = n$ para a busca linear.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FIM CAPÍTULO                                                            %%

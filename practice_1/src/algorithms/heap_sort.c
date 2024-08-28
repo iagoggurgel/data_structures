@@ -20,7 +20,8 @@ void hSort(int * v, int n)
     }
 
     // Heap sort
-    for (int i = n - 1; i > 0; i--) {
+    for (int i = n - 1; i > 0; i--) 
+    {
 
         swap(&v[0], &v[i]);
 

@@ -1,0 +1,10 @@
+\begin{pseudocode}[caption={Algoritmo de ordenação por mesclagem}, label={mergeSortP}]
+MERGE-SORT(A, l, r)
+if l < r then
+    m $\gets$ l + (r - l) / 2
+
+    MERGE-SORT(A, l, m)
+    MERGE-SORT(A, m + 1, r)
+
+    MERGE(A, l, m, r)
+\end{pseudocode}

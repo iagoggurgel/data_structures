@@ -2,13 +2,38 @@
 %% INÍCIO CAPÍTULO                                                         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Análise de algoritmos de árvores e tabelas de dispersão}
+\chapter{Análise de algoritmos de busca em árvores e tabelas de dispersão}
 \label{cap:3:desenvolvimento}
 
 \citacao{%
-Mathematical elegance is not a dispensable luxury\\
-but a factor that decides between success and failure.}
-{Edsger Wybe Dijkstra}
+The greatest teacher, failure is.}
+{Yoda}
+
+\section{Definição formal do problema de busca}
+
+O problema de busca, como apresentado no Capítulo \ref{cap:1:intro}, é um problema bastante recorrente na Computação.
+Sua definição formal consiste em: \\
+
+\textbf{Input: } Uma estrutura de $n$ dados $(d_1, d_2, d_3,\ldots, d_n)$ e um dado $x$ \\
+
+\textbf{Output: } A localização do dado $x$ na estrutura $(d_1, d_2, d_3,\ldots, d_n)$. \\
+
+Para este algoritmo, foram pensadas diversas soluções e estruturas de dados que facilitam o algoritmo 
+e neste capítulo, será realizado o estudo e compreensão das mesmas. 
+É importante perceber que, podemos aproximar a ordem de crescimento do algoritmo de ordenação
+por inserção de forma bastante precisa utilizando as notações assintóticas, mas não é possível
+determinar o tempo de execução para um número de entradas $n$ com muita precisão devido a aspectos
+computacionais como:
+
+\begin{itemize}
+    \item Chaveamento e prioridade de processo no sistema operacional
+    \item Tempo de execução de cada instrução do código compilado
+    \item Velocidade de clock inconstante
+\end{itemize}
+
+\input{content/chapter/3/bTreeSearch}
+\input{content/chapter/3/hashSearch}
+\input{content/chapter/3/bstSearch}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FIM CAPÍTULO                                                            %%

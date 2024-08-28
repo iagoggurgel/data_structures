@@ -23,7 +23,7 @@ void qSort(int * v, int s, int e)
 }
 
 /*
-    Função auxiliar para partir os sub-vetores utilizados no Quick Sort
+    Função auxiliar para partir e ordenar os sub-vetores utilizados no Quick Sort
 
     Entradas:
         v: vetor de inteiros

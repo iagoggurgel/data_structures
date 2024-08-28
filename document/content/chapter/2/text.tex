@@ -6,9 +6,78 @@
 \label{cap:2:sorting}
 
 \citacao{%
-We can only see a short distance ahead,\\
-but we can see plenty there that needs to be done.}
-{Alan Mathison Turing}
+Nothing in life is to be feared, it is only to be understood. \\ Now is the time to understand more, so that we may fear less.}
+{Marie Curie}
+
+\section{Definição formal do problema de ordenação}
+
+O problema de ordenação, como apresentado no Capítulo \ref{cap:1:intro}, é um problema bastante recorrente na Computação.
+Sua definição formal consiste em: \\
+
+\textbf{Input: } Uma sequência de n números $(a_1, a_2, a_3,\ldots, a_n)$ \\
+
+\textbf{Output: } Uma reordenação $(a_1, a_2, a_3,\ldots, a_n)$ da sequência para qual \\
+$a_1 \leq a_2 \leq a_3 \leq \cdots \leq a_n$. \\
+
+Para este algoritmo, foram pensadas diversas soluções e neste capítulo, será realizado o estudo e compreensão das
+mesmas. É importante perceber que, podemos aproximar a ordem de crescimento do algoritmo de ordenação
+por inserção de forma bastante precisa utilizando as notações assintóticas, mas não é possível
+determinar o tempo de execução para um número de entradas $n$ com muita precisão devido a aspectos
+computacionais como:
+
+\begin{itemize}
+    \item Chaveamento e prioridade de processo no sistema operacional
+    \item Tempo de execução de cada instrução do código compilado
+    \item Velocidade de clock inconstante
+\end{itemize}
+
+\input{content/chapter/2/insertionSort}
+\input{content/chapter/2/selectionSort}
+\input{content/chapter/2/heapSort}
+\input{content/chapter/2/mergeSort}
+\input{content/chapter/2/quickSort}
+\input{content/chapter/2/countingSort}
+
+\section{Comparações}
+
+Com as explicações para os algoritmos nas seções (\ref{cap:2:section:isort}, \ref{cap:2:section:ssort}
+\ref{cap:2:section:hsort}, \ref{cap:2:section:msort}, \ref{cap:2:section:qsort}, \ref{cap:2:section:csort}),
+pode-se racionalizar alguns pensamentos entre os algoritmos. Primeiro, se memória não for um fator relevante,
+portanto, ou existe muita memória no computador ou $K$ é uma distância muito pequena, o algoritmo apresentado na
+seção \ref{cap:2:section:csort} é o melhor dos apresentados por executar em tempo linear. Se memória for um fator,
+dentre os algoritmos da ordem $\Theta(n) = n \log n$, provavelmente quem se sobressai é o algoritmo baseado em
+particionamento apresentado na seção \ref{cap:2:section:qsort} porque não utiliza memória auxiliar linear como o \ref{cap:2:section:msort} e
+apresenta um comportamento mais estável que o \ref{cap:2:section:hsort} como pode-se observar no gráfico \ref{cap:2:graph:combined}. 
+Já, se o número de entradas for quase irrelevante, pode-se aplicar um dos algoritmos de ordem $\Theta(n) = n^2$ 
+como os apresentados nas seções (\ref{cap:2:section:isort}, \ref{cap:2:section:ssort}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{image/graphics/Combined.png}
+    \caption{Gráfico com tempo de execução dos algoritmos n log n}
+    \label{cap:2:graph:combined}
+\end{figure}
+
+Na tabela \ref{cap:2:table:all}, podemos ver de forma explícita, os tempos de execução e
+uso de memória para cada algoritmo.
+
+\begin{table}[h]
+    \centering
+    \caption{Comparação de algoritmos}
+    \label{cap:2:table:all}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Algoritmo} & \textbf{T(n)} & \textbf{S(n)} \\ \hline
+    Counting   & $\Theta(n)$    & $\Theta(k)$    \\ \hline
+    Quick      & $\Theta(n \log n)$ & $\Theta(1)$   \\ \hline
+    Merge      & $\Theta(n \log n)$ & $\Theta(n)$    \\ \hline
+    Heap       & $\Theta(n \log n)$ & $\Theta(1)$    \\ \hline
+    Insertion  & $\Theta(n^2)$      & $\Theta(1)$    \\ \hline
+    Selection  & $\Theta(n^2)$      & $\Theta(1)$    \\ \hline
+    \end{tabular}
+\end{table}
+    
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FIM CAPÍTULO                                                            %%
