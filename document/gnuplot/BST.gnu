@@ -7,7 +7,7 @@ set xlabel "Número de entradas"
 set ylabel "T(n) em segundos"
 set grid
 
-f(x) = x * log(x) / log(2) / 10e7
+f(x) = log(x) / log(2) / 10e6
 
 plot "../practice_2/results/bst.csv" using 1:2 with linespoints title "Tempo de execução", \
-    f(x) with lines title "f(n) = n log n"
+    f(x) with lines title "f(n) = log n"

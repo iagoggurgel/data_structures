@@ -7,7 +7,7 @@ set xlabel "Número de entradas"
 set ylabel "T(n) em segundos"
 set grid
 
-f(x) = x * log(x) / log(2) / 10e7
+f(x) = 1 / 10e6
 
-plot "../practice_1/results/hashTable.csv" using 1:2 with linespoints title "Tempo de execução", \
-    f(x) with lines title "f(n) = n log n"
+plot "../practice_2/results/hashTable.csv" using 1:2 with linespoints title "Tempo de execução", \
+    f(x) with lines title "f(n) = O(1)"
